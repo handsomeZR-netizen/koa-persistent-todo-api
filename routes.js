@@ -5,7 +5,20 @@ const { loadTodos, saveTodos } = require('./storage');
 const router = new Router();
 
 /**
- * GET /api/todos - 获取所有任务
+ * @swagger
+ * /api/todos:
+ *   get:
+ *     summary: 获取所有任务
+ *     tags: [Todos]
+ *     responses:
+ *       200:
+ *         description: 成功返回任务列表
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Todo'
  */
 router.get('/api/todos', async (ctx) => {
   const todos = await loadTodos();
@@ -14,7 +27,30 @@ router.get('/api/todos', async (ctx) => {
 });
 
 /**
- * POST /api/todos - 创建新任务
+ * @swagger
+ * /api/todos:
+ *   post:
+ *     summary: 创建新任务
+ *     tags: [Todos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateTodoRequest'
+ *     responses:
+ *       201:
+ *         description: 任务创建成功
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Todo'
+ *       400:
+ *         description: 请求参数错误
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.post('/api/todos', async (ctx) => {
   const { title, completed } = ctx.request.body;
@@ -49,7 +85,38 @@ router.post('/api/todos', async (ctx) => {
 });
 
 /**
- * POST /api/todos/:id - 更新任务
+ * @swagger
+ * /api/todos/{id}:
+ *   post:
+ *     summary: 更新任务
+ *     tags: [Todos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: 任务 ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UpdateTodoRequest'
+ *     responses:
+ *       200:
+ *         description: 任务更新成功
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Todo'
+ *       404:
+ *         description: 任务不存在
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.post('/api/todos/:id', async (ctx) => {
   const { id } = ctx.params;
@@ -85,7 +152,28 @@ router.post('/api/todos/:id', async (ctx) => {
 });
 
 /**
- * DELETE /api/todos/:id - 删除任务
+ * @swagger
+ * /api/todos/{id}:
+ *   delete:
+ *     summary: 删除任务
+ *     tags: [Todos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: 任务 ID
+ *     responses:
+ *       204:
+ *         description: 任务删除成功
+ *       404:
+ *         description: 任务不存在
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.delete('/api/todos/:id', async (ctx) => {
   const { id } = ctx.params;

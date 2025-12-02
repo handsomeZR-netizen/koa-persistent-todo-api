@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List API</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✓</text></svg>">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #ffffff;
+      color: #09090b;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 42rem;
+      width: 100%;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .icon {
+      width: 4rem;
+      height: 4rem;
+      margin: 0 auto 1.5rem;
+      background: #09090b;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #71717a;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover {
+      border-color: #a1a1aa;
+    }
+
+    .card-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-description {
+      font-size: 0.875rem;
+      color: #71717a;
+      margin-bottom: 1rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid #e4e4e7;
+      background: #ffffff;
+      color: #09090b;
+    }
+
+    .button:hover {
+      background: #f4f4f5;
+      border-color: #d4d4d8;
+    }
+
+    .button-primary {
+      background: #09090b;
+      color: #ffffff;
+      border-color: #09090b;
+    }
+
+    .button-primary:hover {
+      background: #18181b;
+      border-color: #18181b;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 9999px;
+      padding: 0.125rem 0.625rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: #f4f4f5;
+      color: #52525b;
+      border: 1px solid #e4e4e7;
+    }
+
+    .endpoints {
+      margin-top: 1.5rem;
+    }
+
+    .endpoint {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      font-family: 'Courier New', monospace;
+      background: #fafafa;
+      margin-bottom: 0.5rem;
+    }
+
+    .method {
+      font-weight: 600;
+      padding: 0.125rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+    }
+
+    .method-get { background: #dbeafe; color: #1e40af; }
+    .method-post { background: #dcfce7; color: #166534; }
+    .method-delete { background: #fee2e2; color: #991b1b; }
+
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.875rem;
+      color: #a1a1aa;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .status-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 9999px;
+      background: #22c55e;
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="icon">✓</div>
+      <h1>Todo List API</h1>
+      <p class="subtitle">基于 Koa 框架的持久化 RESTful API 服务</p>
+      <div class="status-indicator">
+        <span class="status-dot"></span>
+        <span style="font-size: 0.875rem; color: #71717a;">服务运行中</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        📚 API 文档
+      </div>
+      <div class="card-description">
+        访问交互式 Swagger UI 文档，在线测试所有 API 接口
+      </div>
+      <a href="/swagger" class="button button-primary">打开 Swagger UI</a>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        🚀 快速开始
+        <span class="badge">v1.0.0</span>
+      </div>
+      <div class="card-description">
+        以下是可用的 API 端点
+      </div>
+      <div class="endpoints">
+        <div class="endpoint">
+          <span class="method method-get">GET</span>
+          <span>/api/todos</span>
+        </div>
+        <div class="endpoint">
+          <span class="method method-post">POST</span>
+          <span>/api/todos</span>
+        </div>
+        <div class="endpoint">
+          <span class="method method-post">POST</span>
+          <span>/api/todos/:id</span>
+        </div>
+        <div class="endpoint">
+          <span class="method method-delete">DELETE</span>
+          <span>/api/todos/:id</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        💡 示例请求
+      </div>
+      <div class="card-description">
+        使用 curl 创建一个新任务
+      </div>
+      <div class="endpoint" style="display: block; word-break: break-all;">
+        curl -X POST http://localhost:3000/api/todos \<br>
+        &nbsp;&nbsp;-H "Content-Type: application/json" \<br>
+        &nbsp;&nbsp;-d '{"title": "完成作业", "completed": false}'
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Built with Koa · Tested with Jest · Documented with Swagger</p>
+    </div>
+  </div>
+</body>
+</html>
