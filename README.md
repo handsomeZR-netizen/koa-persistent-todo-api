@@ -1,6 +1,6 @@
 # Todo List API
 
-![Build Status](https://github.com/YOUR_USERNAME/todo-list-api/actions/workflows/ci.yml/badge.svg)
+![Build Status](https://github.com/handsomeZR-netizen/koa-persistent-todo-api/actions/workflows/ci.yml/badge.svg)
 ![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
 ![Node.js](https://img.shields.io/badge/node-%3E%3D18.0.0-green)
 ![License](https://img.shields.io/badge/license-ISC-blue)
@@ -54,11 +54,17 @@
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 使用截图
+## 📸 使用截图
 
-<img src="C:\Users\86151\Desktop\2048\bytedance4\img\屏幕截图 2025-12-02 134923.png" alt="屏幕截图 2025-12-02 134923" style="zoom: 50%;" />
+<div align="center">
+  <img src="img/屏幕截图 2025-12-02 134923.png" alt="API 测试截图" width="600"/>
+  <p><em>API 接口测试</em></p>
+</div>
 
-<img src="C:\Users\86151\Desktop\2048\bytedance4\img\屏幕截图 2025-12-02 135003.png" alt="屏幕截图 2025-12-02 135003" style="zoom: 33%;" />
+<div align="center">
+  <img src="img/屏幕截图 2025-12-02 135003.png" alt="Swagger UI 截图" width="600"/>
+  <p><em>Swagger UI 交互式文档</em></p>
+</div>
 
 ## 🚀 快速开始
 
