@@ -1,0 +1,33 @@
+{
+  "name": "todo-list-api",
+  "version": "1.0.0",
+  "description": "基于 Koa 框架的持久化 Todo List API 服务",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest"
+  },
+  "keywords": ["koa", "todo", "api", "rest"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.14.0",
+    "koa-router": "^12.0.0",
+    "koa-bodyparser": "^4.4.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "supertest": "^6.3.0",
+    "fast-check": "^3.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
+  }
+}
