@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Kiro IDE
+.kiro/
+
 # Runtime data
 todos.json
 
