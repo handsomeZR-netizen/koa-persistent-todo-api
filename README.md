@@ -1,4 +1,34 @@
-# Todo List API
+# Koa Persistent Todo Api
+
+<!-- PORTFOLIO-SNAPSHOT:START -->
+<p align="left">
+  <img src="https://img.shields.io/badge/category-Backend%20API%20service-blue" alt="Category" />
+  <img src="https://img.shields.io/badge/status-Public%20portfolio%20artifact-2ea44f" alt="Status" />
+</p>
+
+> Persistent Todo API service built with Koa, filesystem storage, Swagger docs, Docker packaging, tests, and GitHub Actions.
+
+## Project Snapshot
+
+- Category: Backend API service
+- Stack: JavaScript, docker, javascript, koa, nodejs, rest-api
+- Status: Public portfolio artifact
+
+## What This Demonstrates
+
+- Presents the project with a clear purpose, technology stack, and review path.
+- Demonstrates frontend delivery, deployment awareness, and user-facing product structure.
+- Keeps implementation details and usage notes close to the code for easier reuse.
+
+## Quick Start
+
+```bash
+npm install && npm run build
+```
+
+<!-- PORTFOLIO-SNAPSHOT:END -->
+
+## Original Documentation
 
 ![Build Status](https://github.com/handsomeZR-netizen/koa-persistent-todo-api/actions/workflows/ci.yml/badge.svg)
 ![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
